@@ -1,10 +1,10 @@
 import React from "react"
-import Image from "./Assets/Kepin.png"
+import Image from "../Image"
 
 export default function AboutMe() {
   return (
     <div className="homeContainer">
-      <img className="kevinImg" src={Image} alt="image kepin" />
+      <Image />
       <div>
         <p className="aboutMeDesc">
           Hi, my name is Kevin Saputra. A friendly attitude and passionate in

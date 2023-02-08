@@ -1,9 +1,9 @@
-import Image from "./Assets/Kepin.png"
+import Image from "../Image"
 
 export default function Home() {
   return (
     <div className="homeContainer">
-      <img className="kevinImg" src={Image} alt="image kepin" />
+      <Image />
       <div className="text-desc">
         <h1>Kevin Saputra</h1>
         <h1>Front-End Internship</h1>

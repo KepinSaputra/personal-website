@@ -1,5 +1,5 @@
 import { Nav, Navbar } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, useResolvedPath, useMatch } from "react-router-dom"
 
 export default function NavigationBar() {
   return (
@@ -37,24 +37,24 @@ export default function NavigationBar() {
         </Navbar.Brand>
         <Nav className="my-3">
           <ul className="list">
-            <li>
-              <Link className="active list-point" to={"/"}>
-                HOME
-              </Link>
-            </li>
-            <li>
-              <Link className="list-point" to={"./AboutMe"}>
-                ABOUT ME
-              </Link>
-            </li>
-            <li>
-              <Link className="list-point" to={"./Portfolio"}>
-                PORTFOLIO
-              </Link>
-            </li>
+            <CustomLink to="/">Home</CustomLink>
+            <CustomLink to="/AboutMe">About Me</CustomLink>
+            <CustomLink to="/Portfolio">Portfolio</CustomLink>
           </ul>
         </Nav>
       </Navbar>
     </>
+  )
+}
+
+function CustomLink({ to, children, ...props }) {
+  const resolvePath = useResolvedPath(to)
+  const isActive = useMatch({ path: resolvePath.pathname, end: true })
+  return (
+    <li className={isActive ? "active" : ""}>
+      <Link className="list-point" to={to} {...props}>
+        {children}
+      </Link>
+    </li>
   )
 }
